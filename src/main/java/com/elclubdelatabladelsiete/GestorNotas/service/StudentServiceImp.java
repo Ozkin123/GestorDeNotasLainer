@@ -1,6 +1,7 @@
 package com.elclubdelatabladelsiete.GestorNotas.service;
 
 import com.elclubdelatabladelsiete.GestorNotas.entity.StudentEntity;
+import com.elclubdelatabladelsiete.GestorNotas.model.mapper.StudentMapper;
 import com.elclubdelatabladelsiete.GestorNotas.model.request.StudentRequest;
 import com.elclubdelatabladelsiete.GestorNotas.model.respose.StudentResponse;
 import com.elclubdelatabladelsiete.GestorNotas.repository.StudentRepository;
@@ -19,15 +20,9 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     public StudentResponse addStudent(StudentRequest studentRequest) {
-        StudentEntity studentEntity = StudentEntity.builder()
-                .name(studentRequest.getName())
-                .lastName(studentRequest.getLastName())
-                .build();
-        studentRepository.save(studentEntity);
-        StudentResponse studentResponse = new StudentResponse();
-        studentResponse.setName(studentRequest.getName());
-        studentResponse.setLastName(studentRequest.getLastName());
-        return studentResponse;
+        StudentEntity entity =
+                studentRepository.save(StudentMapper.ModelToEntity(studentRequest));
+        return StudentMapper.EntityToModel(entity);
     }
 
     @Override
