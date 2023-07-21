@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class StudentServiceImp implements StudentService{
+public class StudentServiceImp implements StudentService {
 
     @Autowired
     private final StudentRepository studentRepository;
@@ -27,18 +27,21 @@ public class StudentServiceImp implements StudentService{
 
     @Override
     public StudentResponse getStudentById(Integer id) {
-        return StudentMapper.EntityToModel( studentRepository.getById(id));
+        return StudentMapper.EntityToModel(studentRepository.getById(id));
     }
 
     @Override
-    public StudentEntity updateStudent(StudentEntity studentEntity) {
-        return null;
+    public StudentResponse updateStudent(Integer id, StudentRequest studentRequest) {
+        StudentEntity entity = StudentMapper.ModelToEntity(studentRequest);
+        entity.setId(id);
+        return StudentMapper.EntityToModel(studentRepository.save(entity));
+
     }
+
 
     @Override
     public void deleteStudent(Integer id) {
-
+        studentRepository.deleteById(id);
     }
 }
-
 

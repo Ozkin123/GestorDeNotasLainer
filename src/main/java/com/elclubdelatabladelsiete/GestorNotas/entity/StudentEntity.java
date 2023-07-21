@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 @Entity
@@ -18,7 +20,12 @@ public class StudentEntity {
     @Column
     private String lastName;
 
-    public StudentEntity() {
-
-    }
+//    public StudentEntity() {
+//    }
+//
+//    public StudentEntity(Integer id, String name, String lastName) {
+//        this.id = id;
+//        this.name = name;
+//        this.lastName = lastName;
+//    }
 }
