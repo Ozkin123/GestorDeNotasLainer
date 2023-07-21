@@ -6,14 +6,12 @@ import com.elclubdelatabladelsiete.GestorNotas.service.StudentService;
 import com.elclubdelatabladelsiete.GestorNotas.service.StudentServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 @RestController
+@RequestMapping(value = "/api/v1/student")
 public class StudenController {
 
     @Resource
@@ -22,5 +20,10 @@ public class StudenController {
     @PostMapping( value = "/create")
     public StudentResponse createStuden(@RequestBody StudentRequest studentRequest){
        return studentService.addStudent(studentRequest);
+    }
+
+    @GetMapping( value = "/{id}/getById")
+    public StudentResponse readStudent(@PathVariable Integer id){
+        return studentService.getStudentById(id);
     }
 }

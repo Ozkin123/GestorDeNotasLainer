@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.ServiceMode;
+
 
 @AllArgsConstructor
 @Service
@@ -26,10 +26,8 @@ public class StudentServiceImp implements StudentService{
     }
 
     @Override
-    public StudentEntity getStudentById(Integer id) {
-
-        studentRepository.getReferenceById(id);
-        return null;
+    public StudentResponse getStudentById(Integer id) {
+        return StudentMapper.EntityToModel( studentRepository.getById(id));
     }
 
     @Override

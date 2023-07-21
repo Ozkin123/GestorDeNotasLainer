@@ -3,8 +3,9 @@ package com.elclubdelatabladelsiete.GestorNotas.entity;
 import lombok.*;
 
 import javax.persistence.*;
-@Builder
+
 @Data
+@Builder
 @Entity
 @Table(name = "students")
 public class StudentEntity {
@@ -16,4 +17,8 @@ public class StudentEntity {
     private String name;
     @Column
     private String lastName;
+
+    public StudentEntity() {
+
+    }
 }

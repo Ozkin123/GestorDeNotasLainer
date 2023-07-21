@@ -6,7 +6,7 @@ import com.elclubdelatabladelsiete.GestorNotas.model.respose.StudentResponse;
 
 public interface StudentService {
     StudentResponse addStudent(StudentRequest studentRequest); //model
-    StudentEntity getStudentById (Integer id); //model
+    StudentResponse getStudentById (Integer id); //model
     StudentEntity updateStudent(StudentEntity studentEntity); //model
 
     void deleteStudent(Integer id); //model
