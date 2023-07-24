@@ -3,9 +3,6 @@ package com.elclubdelatabladelsiete.GestorNotas.controller;
 import com.elclubdelatabladelsiete.GestorNotas.model.request.StudentRequest;
 import com.elclubdelatabladelsiete.GestorNotas.model.respose.StudentResponse;
 import com.elclubdelatabladelsiete.GestorNotas.service.StudentService;
-import com.elclubdelatabladelsiete.GestorNotas.service.StudentServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
