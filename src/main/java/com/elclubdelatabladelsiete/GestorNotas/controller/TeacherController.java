@@ -6,10 +6,8 @@ import com.elclubdelatabladelsiete.GestorNotas.model.respose.TeacherResponse;
 import com.elclubdelatabladelsiete.GestorNotas.service.TeacherService;
 import com.elclubdelatabladelsiete.GestorNotas.service.TeacherServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -21,6 +19,7 @@ public class TeacherController {
     private TeacherService teacherService;
 
     @PostMapping(value = "/addTeacher")
+    @ResponseStatus(HttpStatus.CREATED)
     public TeacherResponse addTeacher(@RequestBody TeacherRequest teacherRequest){
         return teacherService.addTeacher(teacherRequest);
     }
