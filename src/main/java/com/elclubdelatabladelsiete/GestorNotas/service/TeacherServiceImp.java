@@ -24,4 +24,22 @@ public class TeacherServiceImp implements TeacherService{
         return TeacherMapper.entityToModel(teacherRepository.save(TeacherMapper.modelToEntity(teacherRequest)));
     }
 
+    @Override
+    public TeacherResponse updateTeacher(Integer id,TeacherRequest teacherRequest) {
+        TeacherEntity entity = TeacherMapper.modelToEntity(teacherRequest);
+        entity.setId(id);
+        return TeacherMapper.entityToModel(teacherRepository.save(entity));
+    }
+
+    @Override
+    public TeacherResponse getTeacherById(Integer id) {
+        return TeacherMapper.entityToModel(teacherRepository.getReferenceById(id));
+    }
+
+    @Override
+    public void deleteTeacherById(Integer id) {
+        teacherRepository.deleteById(id);
+    }
+
+
 }

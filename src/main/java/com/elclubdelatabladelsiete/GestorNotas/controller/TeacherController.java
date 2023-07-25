@@ -1,11 +1,8 @@
 package com.elclubdelatabladelsiete.GestorNotas.controller;
 
-import com.elclubdelatabladelsiete.GestorNotas.entity.TeacherEntity;
 import com.elclubdelatabladelsiete.GestorNotas.model.request.TeacherRequest;
 import com.elclubdelatabladelsiete.GestorNotas.model.respose.TeacherResponse;
 import com.elclubdelatabladelsiete.GestorNotas.service.TeacherService;
-import com.elclubdelatabladelsiete.GestorNotas.service.TeacherServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +20,22 @@ public class TeacherController {
     public TeacherResponse addTeacher(@RequestBody TeacherRequest teacherRequest){
         return teacherService.addTeacher(teacherRequest);
     }
+
+    @GetMapping(value = "/getteacherbyid/{id}")
+    public TeacherResponse getTeacherById(@PathVariable Integer id){
+        return teacherService.getTeacherById(id);
+    }
+
+    @PostMapping(value="/updateteacher/{id}")
+    public TeacherResponse updateTeacherById(@PathVariable Integer id,@RequestBody TeacherRequest teacherRequest){
+        return teacherService.updateTeacher(id,teacherRequest);
+    }
+
+    @DeleteMapping(value = "/deleteTeacher/{id}")
+    public void deleteTeacherById(@PathVariable Integer id){
+        teacherService.deleteTeacherById(id);
+    }
+
 
 
 }
